@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Básica com Bootstrap e CSS</title>
+    <!-- Link do Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Link do CSS personalizado -->
+    <link href="styles.css" rel="stylesheet">
+
+    <style>
+        /* styles.css */
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .complete {
+            margin: 0;
+        }
+
+        .blue-bg {
+            background-color: #081c44;
+        }
+
+        .light-blue-bg {
+            background-color: #d1d9de;
+        }
+
+        .cf-1 {
+            height: 5rem;
+            width: 100%;
+        }
+
+        .cf-2 {
+            height: 3rem;
+            width: 100%;
+        }
+
+        .cf-3 {
+            height: auto;
+            width: 90%;
+            border-radius: 10px;
+            position: absolute;
+            top: 5.5rem;
+            left: 50%;
+            transform: translate(-50%);
+            padding: 1rem;
+        }
+
+        .step-square {
+            background-color: #ffffff;
+            border: 2px solid #081c44;
+            border-radius: 10px;
+            text-align: center;
+            padding: 1rem;
+            margin: 0.5rem;
+            flex: 1;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .step-square.active {
+            background-color: #081c44;
+            color: #ffffff;
+        }
+
+        .step-square h4 {
+            margin: 0.5rem 0;
+        }
+
+        .step-square p {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid d-flex blue-bg cf-1 align-items-center justify-content-center">
+        <h2 class="text-center complete text-white">Complete seus dados cadastrais</h2>
+    </div>
+
+    <div class="container-fluid blue-bg cf-2">
+        <div class="container-fluid light-blue-bg cf-3 d-flex flex-wrap justify-content-around">
+            <div class="step-square" data-step="1">
+                <h4>1</h4>
+                <p>Dados cadastrais</p>
+            </div>
+            <div class="step-square" data-step="2">
+                <h4>2</h4>
+                <p>Seu perfil</p>
+            </div>
+            <div class="step-square" data-step="3">
+                <h4>3</h4>
+                <p>Dados Profissionais</p>
+            </div>
+            <div class="step-square" data-step="4">
+                <h4>4</h4>
+                <p>Sobre suas experiências</p>
+            </div>
+            <div class="step-square" data-step="5">
+                <h4>5</h4>
+                <p>Pretenção Salarial</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botões para navegação entre etapas -->
+    <div class="container text-center mt-4">
+        <button class="btn btn-primary" onclick="setStep(1)">Etapa 1</button>
+        <button class="btn btn-primary" onclick="setStep(2)">Etapa 2</button>
+        <button class="btn btn-primary" onclick="setStep(3)">Etapa 3</button>
+        <button class="btn btn-primary" onclick="setStep(4)">Etapa 4</button>
+        <button class="btn btn-primary" onclick="setStep(5)">Etapa 5</button>
+    </div>
+
+    <!-- Link do jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Link do Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <!-- Link do Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        let currentStep = 1;
+
+        function setStep(step) {
+            currentStep = step;
+            updateSteps();
+        }
+
+        function updateSteps() {
+            document.querySelectorAll('.step-square').forEach(square => {
+                const step = parseInt(square.getAttribute('data-step'));
+                if (step === currentStep) {
+                    square.classList.add('active');
+                } else {
+                    square.classList.remove('active');
+                }
+            });
+        }
+
+        // Inicializa o estado inicial
+        updateSteps();
+    </script>
+</body>
+
+</html>
