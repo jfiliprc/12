@@ -72,6 +72,77 @@
         .step-square p {
             font-size: 0.9rem;
         }
+
+        .registration-container {
+            position: relative;
+            margin-top: 12rem;
+            /* Adjust this value as needed to sit below the absolute container */
+        }
+
+        .left-col img {
+            right: 0.5rem;
+            top: 6rem;
+            position: absolute;
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        .right-col img {
+            display: block;
+            margin: 1rem auto;
+            max-width: 50%;
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        .section-container {
+            width: 100%;
+            padding: 1rem;
+            /* Adjust padding as needed */
+            box-sizing: border-box;
+            /* Ensures padding is included in width */
+        }
+
+        .registration-container {
+            position: relative;
+            margin-top: 12rem;
+            /* Adjust this value as needed */
+        }
+
+        @media (max-width: 768px) {
+            .registration-container {
+                margin-top: 20rem;
+                /* Adjust for tablets */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .registration-container {
+                margin-top: 25rem;
+                /* Adjust for mobile phones */
+            }
+
+            .left-col {
+                display: none;
+                /* Hide left column on mobile devices */
+            }
+        }
+
+        .section-container {
+            display: none;
+        }
+
+        .section-container.active {
+            display: block;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
     </style>
 </head>
 
@@ -105,14 +176,94 @@
         </div>
     </div>
 
-    <!-- Botões para navegação entre etapas -->
-    <div class="container text-center mt-4">
-        <button class="btn btn-primary" onclick="setStep(1)">Etapa 1</button>
-        <button class="btn btn-primary" onclick="setStep(2)">Etapa 2</button>
-        <button class="btn btn-primary" onclick="setStep(3)">Etapa 3</button>
-        <button class="btn btn-primary" onclick="setStep(4)">Etapa 4</button>
-        <button class="btn btn-primary" onclick="setStep(5)">Etapa 5</button>
+    <div class="container-fluid registration-container">
+        <!-- Section 1 -->
+        <div class="section-container active" id="section-1">
+            <div class="row">
+                <div class="col-md-3 left-col d-none d-md-block">
+                    <img src="images/info-1.PNG" alt="Image Description">
+                </div>
+                <div class="col-md-6 center-col">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Nome">
+                    </div>
+                    <div class="input-group">
+                        <input type="number" class="form-control col-md-6" placeholder="CPF">
+                        <input type="password" class="form-control col-md-6 ml-5" placeholder="Telefone">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="E-mail">
+                    </div>
+                    <div class="input-group">
+                        <input type="text" class="form-control col-md-11" placeholder="CEP">
+                        <button class="btn-primary btn-rounded ml-2" style="border-radius: 10px;">Buscar</button>
+                    </div>
+                    <div class="input-group">
+                        <input type="number" class="form-control col-md-10" placeholder="Endereço">
+                        <input type="password" class="form-control col-md-2 ml-2" placeholder="Número">
+                    </div>
+                    <div class="input-group">
+                        <input type="number" class="form-control col-md-6" placeholder="CPF">
+                        <input type="password" class="form-control col-md-6 ml-5" placeholder="Telefone">
+                    </div>
+                    <div class="input-group">
+                        <input type="number" class="form-control col-md-10" placeholder="Endereço">
+                        <input type="password" class="form-control col-md-2 ml-2" placeholder="Número">
+                    </div>
+                </div>
+                <div class="col-md-3 right-col">
+                    <img src="images/cnh.PNG" alt="Image 1">
+                    <img src="images/your-pic.PNG" alt="Image 2">
+                    <img src="images/address.PNG" alt="Image 3">
+                </div>
+            </div>
+            <div class="btn-container">
+                <button class="btn btn-primary" onclick="nextSection()">Next</button>
+            </div>
+        </div>
+    
+        <!-- Add more sections here as needed -->
+        <!-- Section 2 -->
+        <div class="section-container" id="section-2">
+            <h3>Section 2</h3>
+            <!-- Content for section 2 -->
+            <div class="btn-container">
+                <button class="btn btn-secondary" onclick="prevSection()">Previous</button>
+                <button class="btn btn-primary" onclick="nextSection()">Next</button>
+            </div>
+        </div>
+    
+        <!-- Section 3 -->
+        <div class="section-container" id="section-3">
+            <h3>Section 3</h3>
+            <!-- Content for section 3 -->
+            <div class="btn-container">
+                <button class="btn btn-secondary" onclick="prevSection()">Previous</button>
+                <button class="btn btn-primary" onclick="nextSection()">Next</button>
+            </div>
+        </div>
+    
+        <!-- Section 4 -->
+        <div class="section-container" id="section-4">
+            <h3>Section 4</h3>
+            <!-- Content for section 4 -->
+            <div class="btn-container">
+                <button class="btn btn-secondary" onclick="prevSection()">Previous</button>
+                <button class="btn btn-primary" onclick="nextSection()">Next</button>
+            </div>
+        </div>
+    
+        <!-- Section 5 -->
+        <div class="section-container" id="section-5">
+            <h3>Section 5</h3>
+            <!-- Content for section 5 -->
+            <div class="btn-container">
+                <button class="btn btn-secondary" onclick="prevSection()">Previous</button>
+                <button class="btn btn-primary" onclick="nextSection()">Submit</button>
+            </div>
+        </div>
     </div>
+    
 
     <!-- Link do jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -122,17 +273,35 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-        let currentStep = 1;
+        let currentSection = 1;
 
-        function setStep(step) {
-            currentStep = step;
-            updateSteps();
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-container').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        function nextSection() {
+            if (currentSection < 5) { // Adjust this number based on the total number of sections
+                currentSection++;
+                showSection('section-' + currentSection);
+                updateSteps();
+            }
+        }
+
+        function prevSection() {
+            if (currentSection > 1) {
+                currentSection--;
+                showSection('section-' + currentSection);
+                updateSteps();
+            }
         }
 
         function updateSteps() {
             document.querySelectorAll('.step-square').forEach(square => {
                 const step = parseInt(square.getAttribute('data-step'));
-                if (step === currentStep) {
+                if (step === currentSection) {
                     square.classList.add('active');
                 } else {
                     square.classList.remove('active');
@@ -141,6 +310,7 @@
         }
 
         // Inicializa o estado inicial
+        showSection('section-1');
         updateSteps();
     </script>
 </body>
